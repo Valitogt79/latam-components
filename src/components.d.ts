@@ -6,6 +6,11 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface LatamButton {
+        "content": string;
+        "customStyles"?: string;
+        "href": string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -22,6 +27,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLLatamButtonElement extends Components.LatamButton, HTMLStencilElement {
+    }
+    var HTMLLatamButtonElement: {
+        prototype: HTMLLatamButtonElement;
+        new (): HTMLLatamButtonElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -29,10 +40,16 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "latam-button": HTMLLatamButtonElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface LatamButton {
+        "content"?: string;
+        "customStyles"?: string;
+        "href"?: string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -48,6 +65,7 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface IntrinsicElements {
+        "latam-button": LatamButton;
         "my-component": MyComponent;
     }
 }
@@ -55,6 +73,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "latam-button": LocalJSX.LatamButton & JSXBase.HTMLAttributes<HTMLLatamButtonElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }

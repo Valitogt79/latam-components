@@ -1,4 +1,10 @@
 import { Config } from '@stencil/core';
+import tailwind, { tailwindHMR, setPluginConfigurationDefaults } from 'stencil-tailwind-plugin';
+import tailwindConf from './tailwind.config';
+
+setPluginConfigurationDefaults({
+  tailwindConf,
+});
 
 export const config: Config = {
   namespace: 'latamcomponents',
@@ -11,6 +17,7 @@ export const config: Config = {
       type: 'dist-custom-elements',
       customElementsExportBehavior: 'auto-define-custom-elements',
       externalRuntime: false,
+      generateTypeDeclarations: true,
     },
     {
       type: 'docs-readme',
@@ -21,6 +28,7 @@ export const config: Config = {
     },
   ],
   testing: {
-    browserHeadless: "new",
+    browserHeadless: 'new',
   },
+  plugins: [tailwind(), tailwindHMR()],
 };
