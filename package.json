@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:Valitogt79/latam-components.git"
+    "url": "https://github.com/Valitogt79/latam-components"
   },
   "files": [
     "dist/",
